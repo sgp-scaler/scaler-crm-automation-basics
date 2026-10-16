@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CRM Automation
 // @namespace    http://tampermonkey.net/
-// @version      4.2
+// @version      4.3
 // @match        https://sales.crm.scaler.com/*
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/sgp-scaler/scaler-crm-automation-basics/main/scaler-crm-automation.user.js
@@ -227,7 +227,7 @@
         // New Call Lead button
         createButton(
             "crm-call-btn",
-            "☎️ Call Lead",
+            "☎️ Call Lead TEST",
             70,
             "#52c41a",
             callLead
