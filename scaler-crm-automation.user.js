@@ -218,7 +218,7 @@
         // Existing DNP button
         createButton(
             "crm-dnp-btn",
-            "📞 DNP",
+            "📞 DNP Lead",
             20,
             "#1677ff",
             processDNP
