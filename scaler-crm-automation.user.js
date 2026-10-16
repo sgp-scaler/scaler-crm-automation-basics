@@ -4,8 +4,8 @@
 // @version      4.1
 // @match        https://sales.crm.scaler.com/*
 // @grant        none
-// @updateURL    https://raw.githubusercontent.com/YOUR_USERNAME/scaler-crm-automation/main/scaler-crm-automation.user.js
-// @downloadURL  https://raw.githubusercontent.com/YOUR_USERNAME/scaler-crm-automation/main/scaler-crm-automation.user.js
+// @updateURL    https://raw.githubusercontent.com/sgp-scaler/scaler-crm-automation-basics/main/scaler-crm-automation.user.js
+// @downloadURL  https://raw.githubusercontent.com/sgp-scaler/scaler-crm-automation-basics/main/scaler-crm-automation.user.js
 // ==/UserScript==
 
 (function () {
