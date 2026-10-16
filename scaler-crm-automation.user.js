@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CRM Automation
 // @namespace    http://tampermonkey.net/
-// @version      4.0
+// @version      4.1
 // @match        https://sales.crm.scaler.com/*
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/YOUR_USERNAME/scaler-crm-automation/main/scaler-crm-automation.user.js
