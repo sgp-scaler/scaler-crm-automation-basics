@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CRM Automation
 // @namespace    http://tampermonkey.net/
-// @version      4.1
+// @version      4.2
 // @match        https://sales.crm.scaler.com/*
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/sgp-scaler/scaler-crm-automation-basics/main/scaler-crm-automation.user.js
@@ -218,7 +218,7 @@
         // Existing DNP button
         createButton(
             "crm-dnp-btn",
-            "📞 DNP Lead",
+            "📞 DNP",
             20,
             "#1677ff",
             processDNP
