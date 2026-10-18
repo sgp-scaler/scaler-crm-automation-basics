@@ -1,17 +1,41 @@
-// ==UserScript==
-// @name         CRM Automation
-// @namespace    http://tampermonkey.net/
-// @version      4.4
-// @match        https://sales.crm.scaler.com/*
-// @grant        none
-// @updateURL    https://raw.githubusercontent.com/sgp-scaler/scaler-crm-automation-basics/main/scaler-crm-automation.user.js
-// @downloadURL  https://raw.githubusercontent.com/sgp-scaler/scaler-crm-automation-basics/main/scaler-crm-automation.user.js
-// ==/UserScript==
+ // ==UserScript==
+ // @name         CRM Automation
+ // @namespace    http://tampermonkey.net/
+ // @version      4.5
+ // @match        https://sales.crm.scaler.com/*
+ // @grant        none
+ // @updateURL    https://raw.githubusercontent.com/sgp-scaler/scaler-crm-automation-basics/main/scaler-crm-automation.user.js
+ // @downloadURL  https://raw.githubusercontent.com/sgp-scaler/scaler-crm-automation-basics/main/scaler-crm-automation.user.js
+ // ==/UserScript==
 
 (function () {
     'use strict';
 
     console.log("CRM Automation Loaded");
+
+    // =========================================================
+    // CLICK TRACKING
+    // =========================================================
+
+    const TRACKER_URL =
+        "https://zisxaykwhdfxvitbgsjq.supabase.co/functions/v1/track-click";
+
+    function trackClick(action) {
+        fetch(TRACKER_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ action }),
+            keepalive: true
+        }).then(response => {
+            if (!response.ok) {
+                console.warn("Click tracking returned status:", response.status);
+            }
+        }).catch(error => {
+            console.warn("Click tracking failed:", error);
+        });
+    }
 
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -23,7 +47,6 @@
     // =========================================================
 
     async function processDNP() {
-
         console.log("DNP: Step 1 - Processes");
 
         const processesButton = [...document.querySelectorAll("button")]
@@ -35,7 +58,6 @@
         }
 
         processesButton.click();
-
         await sleep(400);
 
         console.log("DNP: Step 2 - Call Attempted");
@@ -86,10 +108,8 @@
         }
 
         submitButton.click();
-
         console.log("DNP: Done ✅");
     }
-
 
     // =========================================================
     // CALL LEAD AUTOMATION
@@ -97,7 +117,6 @@
     // =========================================================
 
     async function callLead() {
-
         console.log("CALL: Step 1 - Call Lead");
 
         const callLeadButton = [...document.querySelectorAll("button")]
@@ -124,7 +143,6 @@
         }
 
         callButton.click();
-
         console.log("CALL: Calling...");
 
         // Give CRM time to initiate/ring
@@ -141,17 +159,14 @@
         }
 
         okButton.click();
-
         console.log("CALL: Done ✅");
     }
-
 
     // =========================================================
     // FLOATING BUTTON CREATION
     // =========================================================
 
     function createButton(id, text, top, background, action) {
-
         if (document.getElementById(id)) {
             return;
         }
@@ -186,6 +201,12 @@
         });
 
         btn.addEventListener("click", async () => {
+            // Track the button click without delaying automation
+            if (id === "crm-dnp-btn") {
+                trackClick("DNP");
+            } else if (id === "crm-call-btn") {
+                trackClick("CALL_LEAD");
+            }
 
             // Prevent double clicking while automation is running
             btn.disabled = true;
@@ -204,13 +225,11 @@
         document.body.appendChild(btn);
     }
 
-
     // =========================================================
     // CREATE BUTTONS
     // =========================================================
 
     const interval = setInterval(() => {
-
         if (!document.body) {
             return;
         }
@@ -224,7 +243,7 @@
             processDNP
         );
 
-        // New Call Lead button
+        // Existing Call Lead button
         createButton(
             "crm-call-btn",
             "☎️ Call Lead",
@@ -234,7 +253,6 @@
         );
 
         clearInterval(interval);
-
     }, 500);
 
 })();
