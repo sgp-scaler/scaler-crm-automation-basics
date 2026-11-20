@@ -1,7 +1,7 @@
  // ==UserScript==
  // @name         CRM Automation
  // @namespace    http://tampermonkey.net/
- // @version      4.5
+ // @version      4.6
  // @match        https://sales.crm.scaler.com/*
  // @grant        none
  // @updateURL    https://raw.githubusercontent.com/sgp-scaler/scaler-crm-automation-basics/main/scaler-crm-automation.user.js
@@ -73,7 +73,7 @@
         callAttempted.click();
 
         // Wait for drawer
-        await sleep(1200);
+        await sleep(1800);
 
         console.log("DNP: Step 3 - Selecting No");
 
