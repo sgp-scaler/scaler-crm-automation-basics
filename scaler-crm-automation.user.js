@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Scaler CRM - Combined Automation
 // @namespace    http://tampermonkey.net/
-// @version      4.7
+// @version      4.8
 // @description  DNP + Call Lead + OTG + WhatsApp DNP
 // @match        https://sales.crm.scaler.com/*
 // @match        https://web.whatsapp.com/*
@@ -9,6 +9,7 @@
 // @updateURL    https://raw.githubusercontent.com/sgp-scaler/scaler-crm-automation-basics/main/scaler-crm-automation.user.js
 // @downloadURL  https://raw.githubusercontent.com/sgp-scaler/scaler-crm-automation-basics/main/scaler-crm-automation.user.js
 // ==/UserScript==
+
 
 (function () {
     'use strict';
